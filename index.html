@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repositorio Personal</title>
+    <title>Repositorio de Manuel Ayala Estrada</title>
     
     <!-- Importando tipografía clara y fina de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -36,48 +37,117 @@
             color: var(--azul-marino);
         }
 
-        /* Encabezado */
-        header {
-            background-color: var(--azul-marino);
-            color: var(--blanco);
+        /* --- SECCIÓN HERO (Fondo y Título Principal) --- */
+        .hero {
+            position: relative;
+            height: 100vh; /* Ocupa el 100% del alto de la pantalla */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 4rem 2rem;
+            /* Aquí pones tu foto de fondo. El linear-gradient crea el difuminado hacia abajo */
+            background: 
+                linear-gradient(to bottom, rgba(10, 25, 47, 0.2) 50%, var(--gris-fondo) 100%), 
+                url('ENLACE_A_TU_FOTO_DE_FONDO.jpg') no-repeat center center/cover;
+            /* El background-attachment: fixed crea un ligero efecto parallax al hacer scroll */
+            background-attachment: fixed; 
         }
 
-        header h1 {
+        .hero h1 {
             color: var(--blanco);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
+            font-size: 4rem;
+            letter-spacing: 2px;
+            margin: 0;
+            padding: 0 2rem;
+            /* Sombra sutil para garantizar que el texto se lea sin importar la foto */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); 
+            z-index: 2;
         }
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
+        /* --- SECCIÓN SÓLIDA DE CONTENIDO --- */
+        .contenido-solido {
+            position: relative;
+            background-color: var(--gris-fondo);
+            z-index: 10;
+            padding-top: 2rem; /* Espacio antes del perfil */
         }
 
-        /* Contenedor principal */
-        main {
+        /* --- SECCIÓN DE PERFIL --- */
+        .perfil-container {
             max-width: 1000px;
-            margin: 3rem auto;
+            margin: 0 auto 4rem auto;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que se adapte en móviles */
+            gap: 3rem;
+        }
+
+        .perfil-foto {
+            flex: 0 0 220px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .perfil-foto img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--azul-marino);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .perfil-info {
+            flex: 1;
+            text-align: center; /* Texto centrado a la altura de la foto */
+        }
+
+        .perfil-info p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .redes-sociales a {
+            color: var(--blanco);
+            background-color: var(--azul-marino);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .redes-sociales a:hover {
+            background-color: var(--azul-claro);
+            transform: translateY(-2px);
+        }
+
+        /* --- SECCIÓN DE TARJETAS (Subrepositorios) --- */
+        .repositorios-container {
+            max-width: 1000px;
+            margin: 0 auto 4rem auto;
             padding: 0 2rem;
         }
-
-        .intro {
+        
+        .titulo-seccion {
             text-align: center;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* Cuadrícula de subrepositorios */
         .grid-repositorios {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        /* Tarjetas de enlaces */
         .tarjeta {
             background-color: var(--blanco);
             border-top: 4px solid var(--azul-marino);
@@ -107,66 +177,86 @@
             margin-bottom: 0;
         }
 
-        /* Pie de página */
+        /* --- PIE DE PÁGINA --- */
         footer {
             text-align: center;
             padding: 2rem;
             background-color: var(--azul-marino);
             color: var(--blanco);
             font-size: 0.9rem;
-            margin-top: 4rem;
+        }
+
+        /* Adaptación a pantallas pequeñas */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .perfil-container { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .perfil-foto { flex: 0 0 auto; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Mi Repositorio Personal</h1>
-        <p>Espacio de almacenamiento, ideas y proyectos</p>
+    <!-- PRIMER VISTAZO (Hero) -->
+    <header class="hero">
+        <h1>Repositorio de Manuel Ayala Estrada</h1>
     </header>
 
-    <main>
-        <div class="intro">
-            <p>Bienvenido a mi sitio web alojado en GitHub Pages. Aquí puedes explorar mis proyectos fotográficos, leer mis columnas de opinión y acceder a mis documentos académicos.</p>
-        </div>
-
-        <div class="grid-repositorios">
+    <!-- PÁGINA SÓLIDA QUE DESPLAZA LO ANTERIOR -->
+    <main class="contenido-solido">
+        
+        <!-- SECCIÓN DE PERFIL -->
+        <section class="perfil-container">
+            <div class="perfil-foto">
+                <img src="ENLACE_A_TU_FOTO_DE_PERFIL.jpg" alt="Foto de Manuel Ayala Estrada">
+            </div>
             
-            <!-- Enlace a Apuntes LaTeX -->
-            <a href="./apuntes" class="tarjeta">
-                <h2>📚 Apuntes de Clase</h2>
-                <p>Colección de apuntes académicos elaborados en LaTeX. Incluye documentos de econometría, teoría de juegos, macroeconomía y demostraciones matemáticas renderizadas con TikZ.</p>
-            </a>
+            <div class="perfil-info">
+                <p>Hola, soy estudiante de pregrado en economía con miras a especializarme en finanzas. Este repositorio funciona como mi espacio personal y académico. Aquí documento mis aprendizajes en econometría, consolido mis demostraciones en LaTeX, comparto columnas de opinión sobre los temas que me apasionan y publico ensayos fotográficos de mis tiempos libres.</p>
+                
+                <div class="redes-sociales">
+                    <a href="URL_DE_TU_GITHUB" target="_blank">GitHub</a>
+                    <a href="URL_DE_TU_LINKEDIN" target="_blank">LinkedIn</a>
+                    <a href="URL_DE_TU_INSTAGRAM" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </section>
 
-            <!-- Enlace a Columnas -->
-            <a href="./columnas" class="tarjeta">
-                <h2>📝 Columnas</h2>
-                <p>Artículos, ensayos y artículos de opinión sobre temas de interés personal, análisis y actualidad.</p>
-            </a>
+        <!-- SECCIÓN DE REPOSITORIOS (Tarjetas) -->
+        <section class="repositorios-container">
+            <h2 class="titulo-seccion">Mis Espacios</h2>
+            
+            <div class="grid-repositorios">
+                <a href="./apuntes" class="tarjeta">
+                    <h2>📚 Apuntes de Clase</h2>
+                    <p>Colección de documentos y demostraciones elaborados en LaTeX sobre econometría, teoría de juegos y macroeconomía.</p>
+                </a>
 
-            <!-- Enlace a Blog -->
-            <a href="./blog" class="tarjeta">
-                <h2>✍️ Blog</h2>
-                <p>Espacio más personal para reflexiones, pensamientos y registros de proyectos en curso.</p>
-            </a>
+                <a href="./columnas" class="tarjeta">
+                    <h2>📝 Columnas</h2>
+                    <p>Ensayos y artículos de opinión sobre temas de interés personal, análisis y actualidad.</p>
+                </a>
 
-            <!-- Enlace a Fotografía -->
-            <a href="./fotografia" class="tarjeta">
-                <h2>📷 Fotografía</h2>
-                <p>Galería visual con mi trabajo fotográfico, explorando distintas composiciones, luces y momentos capturados.</p>
-            </a>
+                <a href="./blog" class="tarjeta">
+                    <h2>✍️ Blog</h2>
+                    <p>Espacio más personal para reflexiones, pensamientos y registros de proyectos en curso.</p>
+                </a>
 
-            <!-- Enlace a Otros -->
-            <a href="./otros" class="tarjeta">
-                <h2>📂 Otros Proyectos</h2>
-                <p>Repositorio mixto con código, experimentos, recursos adicionales y material misceláneo.</p>
-            </a>
+                <a href="./fotografia" class="tarjeta">
+                    <h2>📷 Fotografía</h2>
+                    <p>Galería visual con mi trabajo fotográfico, explorando distintas composiciones, luces y momentos capturados.</p>
+                </a>
 
-        </div>
+                <a href="./otros" class="tarjeta">
+                    <h2>📂 Otros Proyectos</h2>
+                    <p>Repositorio mixto con código, experimentos, recursos adicionales y material misceláneo.</p>
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2026 Mi Repositorio Personal. Construido con GitHub Pages.</p>
+        <p>&copy; 2026 Manuel Ayala Estrada. Construido con GitHub Pages.</p>
     </footer>
 
 </body>
